@@ -22,9 +22,13 @@ source_extensions = %w[.swift .m]
 Dir.glob(File.join(root, "MigMouse", "**", "*"), File::FNM_DOTMATCH).sort.each do |path|
   next unless File.file?(path)
   relative = path.delete_prefix(File.join(root, "MigMouse") + "/")
+  next if relative.split("/").any? { |component| component.end_with?(".xcassets") }
   reference = app_group.new_file(relative)
   app.add_file_references([reference]) if source_extensions.include?(File.extname(path))
 end
+
+asset_catalog = app_group.new_file("Assets.xcassets")
+app.resources_build_phase.add_file_reference(asset_catalog)
 
 localization_group = app_group.new_group("Localization", "Localization")
 strings_variant = localization_group.new_variant_group("Localizable.strings")
