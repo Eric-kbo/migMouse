@@ -53,3 +53,7 @@
 "milliseconds_format"="%.0f мс";
 "pinch_to_zoom"="Масштабирование щипком";
 "recognized_pinches_format"="Щипки: %ld";
+"more_actions"="Другие действия";
+"complete_setup"="Завершить настройку";
+"setup_required"="Требуется настройка";
+"ready"="MigMouse готов";

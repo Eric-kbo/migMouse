@@ -53,3 +53,7 @@
 "milliseconds_format" = "%.0f밀리초";
 "pinch_to_zoom" = "오므리기로 확대/축소";
 "recognized_pinches_format" = "핀치: %ld";
+"more_actions" = "추가 작업";
+"complete_setup" = "설정 완료";
+"setup_required" = "설정 필요";
+"ready" = "MigMouse 준비됨";

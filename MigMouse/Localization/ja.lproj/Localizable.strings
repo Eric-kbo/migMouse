@@ -53,3 +53,7 @@
 "milliseconds_format" = "%.0fミリ秒";
 "pinch_to_zoom" = "ピンチでズーム";
 "recognized_pinches_format" = "ピンチ：%ld";
+"more_actions" = "その他の操作";
+"complete_setup" = "設定を完了";
+"setup_required" = "設定が必要です";
+"ready" = "MigMouseは準備完了です";

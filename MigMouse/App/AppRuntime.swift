@@ -36,6 +36,10 @@ final class AppRuntime: ObservableObject {
     private var recognizer: TapRecognizer
     private var pinchRecognizer: PinchGestureRecognizer
     private var permissionTimer: Timer?
+    private var workspaceObservers: [NSObjectProtocol] = []
+    private var lastTouchFrameTimestamp: TimeInterval?
+    private var lastAutomaticReconnectTimestamp: TimeInterval?
+    private let healthPolicy = TouchConnectionHealthPolicy()
 
     init() {
         let configuration = Self.loadConfiguration()
@@ -47,11 +51,15 @@ final class AppRuntime: ObservableObject {
         // control of the same physical device as a running MigMouse instance;
         // stopping the test host can then silence the live app's callbacks.
         guard !Self.isRunningTests else { return }
+        installLifecycleObservers()
         start()
     }
 
     deinit {
         permissionTimer?.invalidate()
+        workspaceObservers.forEach {
+            NSWorkspace.shared.notificationCenter.removeObserver($0)
+        }
     }
 
     func start() {
@@ -68,15 +76,21 @@ final class AppRuntime: ObservableObject {
                     _ = self.systemEvents.start()
                 }
                 self.startBridgeIfNeeded()
+                self.recoverStaleConnectionIfNeeded()
             }
         }
     }
 
     func restartDeviceDiscovery() {
+        reconnectBridge()
+    }
+
+    private func reconnectBridge() {
         stopPinchGesture()
         bridge.stop()
         recognizer.reset()
-        start()
+        currentContacts = []
+        startBridgeIfNeeded()
     }
 
     func requestPermissions() {
@@ -99,6 +113,7 @@ final class AppRuntime: ObservableObject {
         count: Int,
         timestamp: Double
     ) {
+        lastTouchFrameTimestamp = ProcessInfo.processInfo.systemUptime
         var contacts: [TouchContact] = []
         if let touches, count > 0 {
             contacts.reserveCapacity(count)
@@ -193,6 +208,37 @@ final class AppRuntime: ObservableObject {
             self.handle(touches: touches, count: count, timestamp: timestamp)
         }
         refreshBridgeStatus()
+    }
+
+    private func recoverStaleConnectionIfNeeded() {
+        let now = ProcessInfo.processInfo.systemUptime
+        guard healthPolicy.shouldReconnect(
+            now: now,
+            lastPointerMovement: systemEvents.lastPointerMovementTimestamp,
+            lastTouchFrame: lastTouchFrameTimestamp,
+            lastReconnect: lastAutomaticReconnectTimestamp,
+            isEnabled: enabled,
+            isBridgeRunning: bridge.isRunning
+        ) else { return }
+
+        lastAutomaticReconnectTimestamp = now
+        reconnectBridge()
+    }
+
+    private func installLifecycleObservers() {
+        let center = NSWorkspace.shared.notificationCenter
+        let wakeObserver = center.addObserver(
+            forName: NSWorkspace.didWakeNotification,
+            object: nil,
+            queue: .main
+        ) { [weak self] _ in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) { [weak self] in
+                guard let self else { return }
+                self.lastAutomaticReconnectTimestamp = ProcessInfo.processInfo.systemUptime
+                self.reconnectBridge()
+            }
+        }
+        workspaceObservers.append(wakeObserver)
     }
 
     private func saveConfiguration() {

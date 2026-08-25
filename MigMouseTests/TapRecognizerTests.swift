@@ -104,6 +104,45 @@ final class TapRecognizerTests: XCTestCase {
         XCTAssertFalse(movement.suppressesNativeScroll)
     }
 
+    func testHealthPolicyReconnectsForRecentPointerMotionWithoutTouchFrames() {
+        let policy = TouchConnectionHealthPolicy()
+
+        XCTAssertTrue(policy.shouldReconnect(
+            now: 20,
+            lastPointerMovement: 19.5,
+            lastTouchFrame: 15,
+            lastReconnect: 10,
+            isEnabled: true,
+            isBridgeRunning: true
+        ))
+    }
+
+    func testHealthPolicyDoesNotReconnectWhenTouchFramesAreCurrent() {
+        let policy = TouchConnectionHealthPolicy()
+
+        XCTAssertFalse(policy.shouldReconnect(
+            now: 20,
+            lastPointerMovement: 19.5,
+            lastTouchFrame: 19,
+            lastReconnect: nil,
+            isEnabled: true,
+            isBridgeRunning: true
+        ))
+    }
+
+    func testHealthPolicyThrottlesAutomaticReconnects() {
+        let policy = TouchConnectionHealthPolicy()
+
+        XCTAssertFalse(policy.shouldReconnect(
+            now: 20,
+            lastPointerMovement: 19.5,
+            lastTouchFrame: nil,
+            lastReconnect: 15,
+            isEnabled: true,
+            isBridgeRunning: true
+        ))
+    }
+
     private func testingConfiguration() -> GestureConfiguration {
         var configuration = GestureConfiguration.default
         configuration.minimumPeakContact = 0

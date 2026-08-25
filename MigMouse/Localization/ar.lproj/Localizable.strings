@@ -53,3 +53,7 @@
 "milliseconds_format"="%.0f مللي ثانية";
 "pinch_to_zoom"="التكبير والتصغير بإصبعين";
 "recognized_pinches_format"="التكبير: %ld";
+"more_actions"="إجراءات أخرى";
+"complete_setup"="إكمال الإعداد";
+"setup_required"="الإعداد مطلوب";
+"ready"="MigMouse جاهز";

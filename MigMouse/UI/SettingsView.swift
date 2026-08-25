@@ -105,9 +105,21 @@ struct SettingsView: View {
             }
 
             HStack {
-                Button(L10n.text("request_permissions")) { runtime.requestPermissions() }
-                Button(L10n.text("reconnect")) { runtime.restartDeviceDiscovery() }
                 Button(L10n.text("test_left_click")) { runtime.sendTestClick() }
+                Spacer()
+                Menu {
+                    Button(L10n.text("request_permissions")) { runtime.requestPermissions() }
+                    Button(L10n.text("reconnect")) { runtime.restartDeviceDiscovery() }
+                } label: {
+                    Label(
+                        runtime.permissionState.isReady
+                            ? L10n.text("more_actions")
+                            : L10n.text("complete_setup"),
+                        systemImage: runtime.permissionState.isReady
+                            ? "ellipsis.circle"
+                            : "exclamationmark.triangle"
+                    )
+                }
             }
         }
     }

@@ -53,3 +53,7 @@
 "milliseconds_format"="%.0f ms";
 "pinch_to_zoom"="Pizzica per ingrandire";
 "recognized_pinches_format"="Pizzichi: %ld";
+"more_actions"="Altre azioni";
+"complete_setup"="Completa configurazione";
+"setup_required"="Configurazione richiesta";
+"ready"="MigMouse è pronto";

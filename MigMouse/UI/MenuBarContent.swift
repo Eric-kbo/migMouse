@@ -4,23 +4,25 @@ struct MenuBarContent: View {
     @ObservedObject var runtime: AppRuntime
 
     var body: some View {
-        Toggle(L10n.text("tap_to_click_title"), isOn: $runtime.enabled)
+        Label(statusTitle, systemImage: statusSymbol)
 
         Divider()
 
-        Text(runtime.deviceStatus)
-        if !runtime.permissionState.isReady {
-            Button(L10n.text("grant_permissions")) {
-                runtime.requestPermissions()
-            }
-        }
+        Toggle(L10n.text("tap_to_click_title"), isOn: $runtime.enabled)
+
+        Divider()
 
         SettingsLink {
             Text(L10n.text("settings"))
         }
 
-        Button(L10n.text("reconnect_magic_mouse")) {
-            runtime.restartDeviceDiscovery()
+        Menu(runtime.permissionState.isReady ? L10n.text("more_actions") : L10n.text("complete_setup")) {
+            Button(L10n.text("grant_permissions")) {
+                runtime.requestPermissions()
+            }
+            Button(L10n.text("reconnect_magic_mouse")) {
+                runtime.restartDeviceDiscovery()
+            }
         }
 
         Divider()
@@ -29,5 +31,21 @@ struct MenuBarContent: View {
             runtime.quit()
         }
         .keyboardShortcut("q")
+    }
+
+    private var statusTitle: String {
+        if !runtime.permissionState.isReady {
+            return L10n.text("setup_required")
+        }
+        if runtime.activeDeviceCount > 0 {
+            return L10n.text("ready")
+        }
+        return runtime.deviceStatus
+    }
+
+    private var statusSymbol: String {
+        runtime.permissionState.isReady && runtime.activeDeviceCount > 0
+            ? "checkmark.circle.fill"
+            : "exclamationmark.triangle.fill"
     }
 }

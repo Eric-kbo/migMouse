@@ -53,3 +53,7 @@
 "milliseconds_format" = "%.0f 毫秒";
 "pinch_to_zoom" = "雙指捏合縮放";
 "recognized_pinches_format" = "縮放：%ld";
+"more_actions" = "更多操作";
+"complete_setup" = "完成設定";
+"setup_required" = "需要完成設定";
+"ready" = "MigMouse 已就緒";

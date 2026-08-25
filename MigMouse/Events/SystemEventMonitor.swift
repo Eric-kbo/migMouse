@@ -4,6 +4,7 @@ import Foundation
 final class SystemEventMonitor {
     private(set) var lastScrollTimestamp: TimeInterval?
     private(set) var lastPhysicalClickTimestamp: TimeInterval?
+    private(set) var lastPointerMovementTimestamp: TimeInterval?
 
     private var eventTap: CFMachPort?
     private var runLoopSource: CFRunLoopSource?
@@ -23,7 +24,11 @@ final class SystemEventMonitor {
             .scrollWheel,
             .leftMouseDown,
             .rightMouseDown,
-            .otherMouseDown
+            .otherMouseDown,
+            .mouseMoved,
+            .leftMouseDragged,
+            .rightMouseDragged,
+            .otherMouseDragged
         ]
         let mask = types.reduce(CGEventMask(0)) { partial, type in
             partial | (CGEventMask(1) << type.rawValue)
@@ -76,6 +81,8 @@ final class SystemEventMonitor {
             return suppressScrollEvents
         case .leftMouseDown, .rightMouseDown, .otherMouseDown:
             lastPhysicalClickTimestamp = now
+        case .mouseMoved, .leftMouseDragged, .rightMouseDragged, .otherMouseDragged:
+            lastPointerMovementTimestamp = now
         case .tapDisabledByTimeout, .tapDisabledByUserInput:
             if let eventTap {
                 CGEvent.tapEnable(tap: eventTap, enable: true)
@@ -84,5 +91,37 @@ final class SystemEventMonitor {
             break
         }
         return false
+    }
+}
+
+struct TouchConnectionHealthPolicy {
+    // This must be longer than AppRuntime's two-second health-check interval,
+    // otherwise pointer activity immediately after one tick could be missed.
+    var recentPointerWindow: TimeInterval = 3
+    var staleTouchWindow: TimeInterval = 2.5
+    var reconnectCooldown: TimeInterval = 8
+
+    func shouldReconnect(
+        now: TimeInterval,
+        lastPointerMovement: TimeInterval?,
+        lastTouchFrame: TimeInterval?,
+        lastReconnect: TimeInterval?,
+        isEnabled: Bool,
+        isBridgeRunning: Bool
+    ) -> Bool {
+        guard isEnabled,
+              isBridgeRunning,
+              let lastPointerMovement,
+              now - lastPointerMovement <= recentPointerWindow else {
+            return false
+        }
+
+        if let lastTouchFrame, now - lastTouchFrame < staleTouchWindow {
+            return false
+        }
+        if let lastReconnect, now - lastReconnect < reconnectCooldown {
+            return false
+        }
+        return true
     }
 }
