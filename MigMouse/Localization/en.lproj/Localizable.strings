@@ -51,3 +51,5 @@
 "touch_instruction" = "Touch the Magic Mouse to inspect live contacts";
 "touch_surface_accessibility" = "Live Magic Mouse touch surface";
 "milliseconds_format" = "%.0f ms";
+"pinch_to_zoom" = "Pinch to zoom";
+"recognized_pinches_format" = "Pinches: %ld";

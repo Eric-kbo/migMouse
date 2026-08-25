@@ -51,3 +51,5 @@
 "touch_instruction"="Magic Mouse berühren, um Kontakte live anzuzeigen";
 "touch_surface_accessibility"="Live-Touchoberfläche der Magic Mouse";
 "milliseconds_format"="%.0f ms";
+"pinch_to_zoom"="Zum Zoomen auf- und zuziehen";
+"recognized_pinches_format"="Zoomgesten: %ld";

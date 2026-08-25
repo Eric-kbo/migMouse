@@ -17,6 +17,7 @@ struct SettingsView: View {
         Form {
             Section {
                 Toggle(L10n.text("tap_to_click"), isOn: binding(\.tapToClickEnabled))
+                Toggle(L10n.text("pinch_to_zoom"), isOn: binding(\.pinchToZoomEnabled))
                 Toggle(L10n.text("secondary_tap"), isOn: binding(\.secondaryTapEnabled))
 
                 Picker(L10n.text("secondary_tap"), selection: binding(\.secondaryTapMode)) {
@@ -87,6 +88,8 @@ struct SettingsView: View {
             HStack {
                 Text(L10n.format("recognized_taps_format", runtime.recognizedTapCount))
                 Text(L10n.format("posted_clicks_format", runtime.postedClickCount))
+                    .foregroundStyle(.secondary)
+                Text(L10n.format("recognized_pinches_format", runtime.recognizedPinchCount))
                     .foregroundStyle(.secondary)
                 Spacer()
                 if let tap = runtime.lastRecognizedTap {

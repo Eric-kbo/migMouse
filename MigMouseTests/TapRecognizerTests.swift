@@ -64,6 +64,46 @@ final class TapRecognizerTests: XCTestCase {
         )
     }
 
+    func testPinchProducesNativeGestureSequence() {
+        var configuration = testingConfiguration()
+        configuration.pinchActivationScale = 0.03
+        configuration.pinchSensitivity = 1
+        var recognizer = PinchGestureRecognizer(configuration: configuration)
+
+        XCTAssertTrue(recognizer.process(frame: frame(9.0, [
+            contact(1, 0.4, 0.5), contact(2, 0.6, 0.5)
+        ])).events.isEmpty)
+
+        let changed = recognizer.process(frame: frame(9.1, [
+            contact(1, 0.38, 0.5), contact(2, 0.62, 0.5)
+        ]))
+        XCTAssertEqual(changed.events.first, .magnifyBegan(timestamp: 9.1))
+        guard case let .magnifyChanged(delta, timestamp) = changed.events.last else {
+            return XCTFail("Expected magnification change")
+        }
+        XCTAssertGreaterThan(delta, 0)
+        XCTAssertEqual(timestamp, 9.1)
+        XCTAssertTrue(changed.suppressesNativeScroll)
+        XCTAssertEqual(
+            recognizer.process(frame: frame(9.2, [])).events,
+            [.magnifyEnded(timestamp: 9.2)]
+        )
+    }
+
+    func testSmallTwoFingerMotionRemainsEligibleForSecondaryTap() {
+        var recognizer = PinchGestureRecognizer(configuration: testingConfiguration())
+        _ = recognizer.process(frame: frame(10.0, [
+            contact(1, 0.4, 0.5), contact(2, 0.6, 0.5)
+        ]))
+        let movement = recognizer.process(frame: frame(10.1, [
+            contact(1, 0.398, 0.5), contact(2, 0.602, 0.5)
+        ]))
+
+        XCTAssertTrue(movement.events.isEmpty)
+        XCTAssertFalse(movement.cancelsTapCandidate)
+        XCTAssertFalse(movement.suppressesNativeScroll)
+    }
+
     private func testingConfiguration() -> GestureConfiguration {
         var configuration = GestureConfiguration.default
         configuration.minimumPeakContact = 0

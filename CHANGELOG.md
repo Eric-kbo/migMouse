@@ -4,6 +4,10 @@ All notable changes to MigMouse will be documented here.
 
 ## [Unreleased]
 
+### Added
+
+- Two-finger pinch-to-zoom using native macOS magnification events
+
 ### Fixed
 
 - Prevent app-hosted unit tests from starting and stopping the real Magic Mouse touch device used by another running MigMouse instance
@@ -11,7 +15,6 @@ All notable changes to MigMouse will be documented here.
 
 ### Planned
 
-- Tap-and-drag and drag lock
 - Personalized touch calibration
 - Additional trackpad-style gestures
 

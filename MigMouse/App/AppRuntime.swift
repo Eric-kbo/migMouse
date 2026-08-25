@@ -4,7 +4,14 @@ import Foundation
 
 @MainActor
 final class AppRuntime: ObservableObject {
-    @Published var enabled = true
+    @Published var enabled = true {
+        didSet {
+            if !enabled {
+                stopPinchGesture()
+                recognizer.reset()
+            }
+        }
+    }
     @Published var permissionState = PermissionManager.currentState()
     @Published var deviceStatus = L10n.text("starting")
     @Published var activeDeviceCount = 0
@@ -13,9 +20,11 @@ final class AppRuntime: ObservableObject {
     @Published var lastRejectionReason: TapRejectionReason?
     @Published var recognizedTapCount = 0
     @Published var postedClickCount = 0
+    @Published var recognizedPinchCount = 0
     @Published var configuration: GestureConfiguration {
         didSet {
             recognizer.configuration = configuration
+            pinchRecognizer.configuration = configuration
             saveConfiguration()
         }
     }
@@ -23,13 +32,16 @@ final class AppRuntime: ObservableObject {
     private let bridge = MMMultitouchBridge()
     private let systemEvents = SystemEventMonitor()
     private let synthesizer = MouseEventSynthesizer()
+    private let magnificationSynthesizer = MagnificationEventSynthesizer()
     private var recognizer: TapRecognizer
+    private var pinchRecognizer: PinchGestureRecognizer
     private var permissionTimer: Timer?
 
     init() {
         let configuration = Self.loadConfiguration()
         self.configuration = configuration
         self.recognizer = TapRecognizer(configuration: configuration)
+        self.pinchRecognizer = PinchGestureRecognizer(configuration: configuration)
         // An application-hosted XCTest bundle launches the app before running
         // logic tests. Starting MultitouchSupport in that process would take
         // control of the same physical device as a running MigMouse instance;
@@ -61,6 +73,7 @@ final class AppRuntime: ObservableObject {
     }
 
     func restartDeviceDiscovery() {
+        stopPinchGesture()
         bridge.stop()
         recognizer.reset()
         start()
@@ -120,7 +133,16 @@ final class AppRuntime: ObservableObject {
             timestamp: ProcessInfo.processInfo.systemUptime,
             contacts: contacts
         )
-        let tap = recognizer.process(frame: frame, activity: systemEvents.snapshot)
+        let pinchOutput = pinchRecognizer.process(frame: frame)
+        systemEvents.suppressScrollEvents = pinchOutput.suppressesNativeScroll
+        if pinchOutput.cancelsTapCandidate {
+            recognizer.cancelCurrentGesture()
+        }
+        handle(events: pinchOutput.events)
+
+        let tap = pinchOutput.cancelsTapCandidate
+            ? nil
+            : recognizer.process(frame: frame, activity: systemEvents.snapshot)
         if currentContacts.isEmpty {
             lastRejectionReason = recognizer.lastRejectionReason
         }
@@ -134,6 +156,26 @@ final class AppRuntime: ObservableObject {
             synthesizer.click(button: tap.button, timestamp: frame.timestamp)
             postedClickCount += 1
         }
+    }
+
+    private func handle(events: [PinchGestureEvent]) {
+        for event in events {
+            switch event {
+            case .magnifyBegan:
+                magnificationSynthesizer.begin()
+                recognizedPinchCount += 1
+            case let .magnifyChanged(delta, _):
+                magnificationSynthesizer.change(by: delta)
+            case .magnifyEnded:
+                magnificationSynthesizer.end()
+            }
+        }
+    }
+
+    private func stopPinchGesture() {
+        let timestamp = ProcessInfo.processInfo.systemUptime
+        handle(events: pinchRecognizer.reset(timestamp: timestamp))
+        systemEvents.suppressScrollEvents = false
     }
 
     private func refreshBridgeStatus() {

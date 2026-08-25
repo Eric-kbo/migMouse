@@ -61,3 +61,40 @@ final class MouseEventSynthesizer {
         }
     }
 }
+
+final class MagnificationEventSynthesizer {
+    private enum Phase: Int64 {
+        case began = 0x01
+        case changed = 0x02
+        case ended = 0x04
+    }
+
+    private let gestureType = CGEventType(rawValue: 29)!
+    private let gestureSubtypeField = CGEventField(rawValue: 110)!
+    private let magnificationField = CGEventField(rawValue: 113)!
+    private let gesturePhaseField = CGEventField(rawValue: 132)!
+
+    func begin() {
+        post(delta: 0, phase: .began)
+        // A zero changed event removes the initial lag in AppKit's gesture path.
+        post(delta: 0, phase: .changed)
+    }
+
+    func change(by delta: Double) {
+        post(delta: delta, phase: .changed)
+    }
+
+    func end() {
+        post(delta: 0, phase: .ended)
+    }
+
+    private func post(delta: Double, phase: Phase) {
+        guard let event = CGEvent(source: nil) else { return }
+        event.type = gestureType
+        event.setIntegerValueField(gestureSubtypeField, value: 8) // kIOHIDEventTypeZoom
+        event.setIntegerValueField(gesturePhaseField, value: phase.rawValue)
+        event.setDoubleValueField(magnificationField, value: delta)
+        SyntheticEventIdentity.mark(event)
+        event.post(tap: .cghidEventTap)
+    }
+}

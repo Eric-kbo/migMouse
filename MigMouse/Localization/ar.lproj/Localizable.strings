@@ -51,3 +51,5 @@
 "touch_instruction"="المس Magic Mouse لمشاهدة نقاط اللمس مباشرة";
 "touch_surface_accessibility"="سطح اللمس المباشر لـ Magic Mouse";
 "milliseconds_format"="%.0f مللي ثانية";
+"pinch_to_zoom"="التكبير والتصغير بإصبعين";
+"recognized_pinches_format"="التكبير: %ld";

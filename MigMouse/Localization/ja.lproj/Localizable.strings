@@ -51,3 +51,5 @@
 "touch_instruction" = "Magic Mouseに触れて接触点を確認";
 "touch_surface_accessibility" = "Magic Mouseのライブタッチ面";
 "milliseconds_format" = "%.0fミリ秒";
+"pinch_to_zoom" = "ピンチでズーム";
+"recognized_pinches_format" = "ピンチ：%ld";

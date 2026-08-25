@@ -7,6 +7,7 @@ final class SystemEventMonitor {
 
     private var eventTap: CFMachPort?
     private var runLoopSource: CFRunLoopSource?
+    var suppressScrollEvents = false
 
     var snapshot: InputActivitySnapshot {
         InputActivitySnapshot(
@@ -32,12 +33,14 @@ final class SystemEventMonitor {
         guard let tap = CGEvent.tapCreate(
             tap: .cgSessionEventTap,
             place: .headInsertEventTap,
-            options: .listenOnly,
+            options: .defaultTap,
             eventsOfInterest: mask,
             callback: { _, type, event, context in
                 guard let context else { return Unmanaged.passUnretained(event) }
                 let monitor = Unmanaged<SystemEventMonitor>.fromOpaque(context).takeUnretainedValue()
-                monitor.handle(type: type, event: event)
+                if monitor.handle(type: type, event: event) {
+                    return nil
+                }
                 return Unmanaged.passUnretained(event)
             },
             userInfo: pointer
@@ -64,12 +67,13 @@ final class SystemEventMonitor {
         eventTap = nil
     }
 
-    private func handle(type: CGEventType, event: CGEvent) {
-        guard !SyntheticEventIdentity.owns(event) else { return }
+    private func handle(type: CGEventType, event: CGEvent) -> Bool {
+        guard !SyntheticEventIdentity.owns(event) else { return false }
         let now = ProcessInfo.processInfo.systemUptime
         switch type {
         case .scrollWheel:
             lastScrollTimestamp = now
+            return suppressScrollEvents
         case .leftMouseDown, .rightMouseDown, .otherMouseDown:
             lastPhysicalClickTimestamp = now
         case .tapDisabledByTimeout, .tapDisabledByUserInput:
@@ -79,5 +83,6 @@ final class SystemEventMonitor {
         default:
             break
         }
+        return false
     }
 }

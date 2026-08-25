@@ -49,6 +49,18 @@ struct RecognizedTap: Equatable, Sendable {
     let fingerCount: Int
 }
 
+enum PinchGestureEvent: Equatable, Sendable {
+    case magnifyBegan(timestamp: TimeInterval)
+    case magnifyChanged(delta: Double, timestamp: TimeInterval)
+    case magnifyEnded(timestamp: TimeInterval)
+}
+
+struct PinchGestureOutput: Equatable, Sendable {
+    var events: [PinchGestureEvent] = []
+    var cancelsTapCandidate = false
+    var suppressesNativeScroll = false
+}
+
 enum TapRejectionReason: String, Equatable, Sendable {
     case tooLong
     case moved

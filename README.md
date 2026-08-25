@@ -23,6 +23,7 @@ Magic Mouse has an excellent multi-touch surface, yet macOS does not offer the t
 
 - One-finger tap to left-click
 - Two-finger tap or right-side tap to right-click
+- Two-finger pinch to zoom with native macOS magnification events
 - Natural double-click behavior with correct click counts
 - Arbitration with scrolling and physical clicks to prevent accidental taps
 - Adjustable timing, movement, pressure, and right-click zone
@@ -79,7 +80,7 @@ All touch processing happens locally. MigMouse has no network client, telemetry,
 
 ## Project status
 
-Milestone 1 is complete and usable. Tap-and-drag, drag lock, personalized calibration, and additional gestures are planned for later milestones. See [CHANGELOG.md](CHANGELOG.md).
+Milestone 1 is complete and usable. Personalized calibration and additional gestures are planned for later milestones. See [CHANGELOG.md](CHANGELOG.md).
 
 Because MigMouse depends on an undocumented Apple framework, a future macOS update may require compatibility work. Bug reports with macOS version and Magic Mouse model are especially helpful.
 

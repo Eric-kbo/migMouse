@@ -51,3 +51,5 @@
 "touch_instruction"="Toca el Magic Mouse para ver los contactos en directo";
 "touch_surface_accessibility"="Superficie táctil en directo del Magic Mouse";
 "milliseconds_format"="%.0f ms";
+"pinch_to_zoom"="Pellizcar para ampliar";
+"recognized_pinches_format"="Pellizcos: %ld";

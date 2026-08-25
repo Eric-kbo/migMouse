@@ -31,6 +31,11 @@ struct TapRecognizer {
         lastRejectionReason = nil
     }
 
+    mutating func cancelCurrentGesture() {
+        candidate = nil
+        lastRejectionReason = .moved
+    }
+
     mutating func process(
         frame: TouchFrame,
         activity: InputActivitySnapshot
@@ -168,6 +173,101 @@ struct TapRecognizer {
             return .physicalClick
         }
         return nil
+    }
+}
+
+struct PinchGestureRecognizer {
+    private struct PinchCandidate {
+        let initialDistance: Double
+        var previousDistance: Double
+    }
+
+    var configuration: GestureConfiguration
+    private var pinchCandidate: PinchCandidate?
+    private var isMagnifying = false
+
+    init(configuration: GestureConfiguration = .default) {
+        self.configuration = configuration
+    }
+
+    mutating func reset(timestamp: TimeInterval) -> [PinchGestureEvent] {
+        var events: [PinchGestureEvent] = []
+        if isMagnifying {
+            events.append(.magnifyEnded(timestamp: timestamp))
+        }
+        pinchCandidate = nil
+        isMagnifying = false
+        return events
+    }
+
+    mutating func process(frame: TouchFrame) -> PinchGestureOutput {
+        let active = frame.activeContacts
+
+        if isMagnifying {
+            guard active.count == 2 else {
+                isMagnifying = false
+                pinchCandidate = nil
+                return PinchGestureOutput(
+                    events: [.magnifyEnded(timestamp: frame.timestamp)],
+                    cancelsTapCandidate: true
+                )
+            }
+            let distance = active[0].position.distance(to: active[1].position)
+            guard var pinch = pinchCandidate, pinch.previousDistance > 0 else {
+                pinchCandidate = PinchCandidate(initialDistance: distance, previousDistance: distance)
+                return PinchGestureOutput(cancelsTapCandidate: true, suppressesNativeScroll: true)
+            }
+            let delta = magnificationDelta(from: pinch.previousDistance, to: distance)
+            pinch.previousDistance = distance
+            pinchCandidate = pinch
+            return PinchGestureOutput(
+                events: abs(delta) > 0.0001 ? [.magnifyChanged(delta: delta, timestamp: frame.timestamp)] : [],
+                cancelsTapCandidate: true,
+                suppressesNativeScroll: true
+            )
+        }
+
+        guard !active.isEmpty else {
+            pinchCandidate = nil
+            return PinchGestureOutput()
+        }
+
+        if active.count == 2 {
+            guard configuration.pinchToZoomEnabled else {
+                pinchCandidate = nil
+                return PinchGestureOutput()
+            }
+            let distance = active[0].position.distance(to: active[1].position)
+            guard distance > 0.001 else { return PinchGestureOutput() }
+            if var pinch = pinchCandidate {
+                let totalScale = abs(log(distance / pinch.initialDistance))
+                let delta = magnificationDelta(from: pinch.previousDistance, to: distance)
+                pinch.previousDistance = distance
+                pinchCandidate = pinch
+                if totalScale >= configuration.pinchActivationScale {
+                    isMagnifying = true
+                    return PinchGestureOutput(
+                        events: [
+                            .magnifyBegan(timestamp: frame.timestamp),
+                            .magnifyChanged(delta: delta, timestamp: frame.timestamp)
+                        ],
+                        cancelsTapCandidate: true,
+                        suppressesNativeScroll: true
+                    )
+                }
+            } else {
+                pinchCandidate = PinchCandidate(initialDistance: distance, previousDistance: distance)
+            }
+            return PinchGestureOutput()
+        }
+
+        pinchCandidate = nil
+        return PinchGestureOutput()
+    }
+
+    private func magnificationDelta(from previous: Double, to current: Double) -> Double {
+        guard previous > 0, current > 0 else { return 0 }
+        return max(-0.12, min(0.12, log(current / previous) * configuration.pinchSensitivity))
     }
 }
 

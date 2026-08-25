@@ -51,3 +51,5 @@
 "touch_instruction"="Коснитесь Magic Mouse для просмотра контактов";
 "touch_surface_accessibility"="Интерактивная сенсорная поверхность Magic Mouse";
 "milliseconds_format"="%.0f мс";
+"pinch_to_zoom"="Масштабирование щипком";
+"recognized_pinches_format"="Щипки: %ld";

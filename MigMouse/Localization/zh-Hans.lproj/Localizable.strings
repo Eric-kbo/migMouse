@@ -51,3 +51,5 @@
 "touch_instruction" = "触摸 Magic Mouse 以查看实时触点";
 "touch_surface_accessibility" = "Magic Mouse 实时触摸表面";
 "milliseconds_format" = "%.0f 毫秒";
+"pinch_to_zoom" = "双指捏合缩放";
+"recognized_pinches_format" = "缩放：%ld";
