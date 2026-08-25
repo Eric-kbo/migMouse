@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "08D5615E9927546BF68989A3"
+               BlueprintIdentifier = "2BF958A7B097E8F19410F06F"
                BuildableName = "MigMouse.app"
                BlueprintName = "MigMouse"
                ReferencedContainer = "container:MigMouse.xcodeproj">
@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "08D5615E9927546BF68989A3"
+               BlueprintIdentifier = "2BF958A7B097E8F19410F06F"
                BuildableName = "MigMouse.app"
                BlueprintName = "MigMouse"
                ReferencedContainer = "container:MigMouse.xcodeproj">
@@ -42,7 +42,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7DB0377D26019987C11AEA83"
+               BlueprintIdentifier = "E7127E1142CD7378C412DDA5"
                BuildableName = "MigMouseTests.xctest"
                BlueprintName = "MigMouseTests"
                ReferencedContainer = "container:MigMouse.xcodeproj">
