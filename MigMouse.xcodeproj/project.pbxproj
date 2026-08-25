@@ -1,0 +1,602 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		01929E026C62B165BAF03745 /* TouchModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EBC6D35A325E4A32C316E2 /* TouchModels.swift */; };
+		10C15E56CB04D17679A4E853 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACDF9EB62701CE17F5360D70 /* Cocoa.framework */; };
+		1AD04534D917A77D45CB99C6 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A21DAEE655FFB1FC77A389 /* Localization.swift */; };
+		1FA3B25AA7857BF67CB4755E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68ABA0A6475B6639BF13EE97 /* Foundation.framework */; };
+		207CEF0A30782313FAA74436 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5824AC70467805BE39E032 /* SettingsView.swift */; };
+		2D39A5E0F4E0123696D07037 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 810D531A8D3154DCECDB1050 /* CoreGraphics.framework */; };
+		43C7C876C3C535051DEA5371 /* MigMouseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A05F4F4DBFBAA95DFDBE213 /* MigMouseApp.swift */; };
+		4AADDCEFE1C5C1AC52254709 /* SyntheticEventIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6BA2A3ED6B0862D4019E730 /* SyntheticEventIdentity.swift */; };
+		5140F980A692E5F457ECB02B /* TouchSurfaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7046B9BE453C3DB4D57DB6 /* TouchSurfaceView.swift */; };
+		52043F66F48E377F45F79997 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70755F0241F469377F9F6418 /* AppKit.framework */; };
+		5FB01F46860DBF0B1B466743 /* SystemEventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F8B9BD1C2A37C13FA255FB /* SystemEventMonitor.swift */; };
+		6B43CBDD1B585F301DC12133 /* GestureConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8AA50DD4EBA8CFD87A2F0F /* GestureConfiguration.swift */; };
+		8F7D06BF44DCBD43B0E00931 /* PermissionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DD2516618D4452FF312087 /* PermissionManager.swift */; };
+		9777E554FF7F20117A049ADA /* TapRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC58EF6E23035A4291551236 /* TapRecognizer.swift */; };
+		9D5D75CF5B2D7D814260E540 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FD66107A90FB8F8B35D8382 /* ApplicationServices.framework */; };
+		C3F7FCF46E9A649B74545642 /* MenuBarContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D73CBEA14F8A48B44DAD064 /* MenuBarContent.swift */; };
+		C9A9582444973FC7FD123BAD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACDF9EB62701CE17F5360D70 /* Cocoa.framework */; };
+		D2350F6420E2A1FEC7029EB0 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8CEDEEDBBFFBB4BE6BD0C18 /* SwiftUI.framework */; };
+		DE2EC731782D0FCEF8BD0919 /* MouseEventSynthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04637DB9E8DCEF075381F22 /* MouseEventSynthesizer.swift */; };
+		EA9273028CDD691CD1419A88 /* AppRuntime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB02074D74A3C83B7334E79 /* AppRuntime.swift */; };
+		EDD3E2C3EAA75FEDE9E630D1 /* TapRecognizerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D99CDD87856CF253D7FEC3 /* TapRecognizerTests.swift */; };
+		F6DCA255EE2C3B08876A3749 /* MMMultitouchBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = D4282558B32BD919EA682343 /* MMMultitouchBridge.m */; };
+		FE5F129A3E731A0A341C615C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 426E30186F5FD68D473DF5FC /* Localizable.strings */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		690A4D043CB397357F082C7D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C39D8DDC6962876580B518AA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 08D5615E9927546BF68989A3;
+			remoteInfo = MigMouse;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		01BDDB8F593790DDA7BA9527 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = "Localization/zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		01E185C17DB14361EC60459E /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0D5824AC70467805BE39E032 /* SettingsView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SettingsView.swift; path = UI/SettingsView.swift; sourceTree = "<group>"; };
+		0D73CBEA14F8A48B44DAD064 /* MenuBarContent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MenuBarContent.swift; path = UI/MenuBarContent.swift; sourceTree = "<group>"; };
+		0E08D5BE45A953426912802B /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1C7046B9BE453C3DB4D57DB6 /* TouchSurfaceView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TouchSurfaceView.swift; path = UI/TouchSurfaceView.swift; sourceTree = "<group>"; };
+		20D99CDD87856CF253D7FEC3 /* TapRecognizerTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TapRecognizerTests.swift; sourceTree = "<group>"; };
+		2251385EE2D420A849AFD1AE /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = Localization/it.lproj/Localizable.strings; sourceTree = "<group>"; };
+		244E5FA72F6FAD77DC194CEF /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = "Localization/pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		26DD2516618D4452FF312087 /* PermissionManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PermissionManager.swift; path = Permissions/PermissionManager.swift; sourceTree = "<group>"; };
+		27A57AD7981A703D8264DA46 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2CA9CF07AFA9285B9EF5F572 /* MigMouse-Bridging-Header.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "MigMouse-Bridging-Header.h"; path = "Supporting/MigMouse-Bridging-Header.h"; sourceTree = "<group>"; };
+		2FB02074D74A3C83B7334E79 /* AppRuntime.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AppRuntime.swift; path = App/AppRuntime.swift; sourceTree = "<group>"; };
+		32A21DAEE655FFB1FC77A389 /* Localization.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Localization.swift; path = Localization/Localization.swift; sourceTree = "<group>"; };
+		4214A0FBAD8307082899F813 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		45E2C9DECA0568809B7AB408 /* MMMultitouchBridge.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MMMultitouchBridge.h; path = Multitouch/MMMultitouchBridge.h; sourceTree = "<group>"; };
+		4DE090A624462413D328BBB8 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = Localization/es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4FE4F47D043BD3E351CBA09A /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5A05F4F4DBFBAA95DFDBE213 /* MigMouseApp.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MigMouseApp.swift; path = App/MigMouseApp.swift; sourceTree = "<group>"; };
+		68ABA0A6475B6639BF13EE97 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		6AE4A9CCFDD196F1668B68C2 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = Localization/ko.lproj/Localizable.strings; sourceTree = "<group>"; };
+		6D1BA4F6A7457893259F0E63 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = Supporting/Info.plist; sourceTree = "<group>"; };
+		6E8EE2983A991500751F2064 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
+		6F8227D4E4EEB44AA10BE267 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		70755F0241F469377F9F6418 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		75BD40FC9664EF44E9823970 /* MultitouchSupportTypes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MultitouchSupportTypes.h; path = Multitouch/MultitouchSupportTypes.h; sourceTree = "<group>"; };
+		76301DAE789908F235372E68 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		78644C631976FFC1939CA375 /* MigMouseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MigMouseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A83DD65B98556EA56A5E972 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		810D531A8D3154DCECDB1050 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		816454572E37C9C017E88023 /* MigMouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MigMouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		874A5555D461BD63FA97889B /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		8FD66107A90FB8F8B35D8382 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
+		A04637DB9E8DCEF075381F22 /* MouseEventSynthesizer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MouseEventSynthesizer.swift; path = Events/MouseEventSynthesizer.swift; sourceTree = "<group>"; };
+		A368F1CD1908C2C80B8DF72B /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = Localization/fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A6B12BE52C52CB2964444EE8 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = Localization/ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A8CEDEEDBBFFBB4BE6BD0C18 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		ACDF9EB62701CE17F5360D70 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		AD8AA50DD4EBA8CFD87A2F0F /* GestureConfiguration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GestureConfiguration.swift; path = Gestures/GestureConfiguration.swift; sourceTree = "<group>"; };
+		B0162F8C730030E1DC01BCA6 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BDE8386F6DB99DFB5ED14F46 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = Localization/ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C0668D94A84236D7DF30C72B /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = Localization/de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C3355B33C50E3D86993516DC /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = "Localization/zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		CC58EF6E23035A4291551236 /* TapRecognizer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TapRecognizer.swift; path = Gestures/TapRecognizer.swift; sourceTree = "<group>"; };
+		CD2E76B3C188E51838C95A4A /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = Localization/en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D4282558B32BD919EA682343 /* MMMultitouchBridge.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MMMultitouchBridge.m; path = Multitouch/MMMultitouchBridge.m; sourceTree = "<group>"; };
+		E6381BCF968A9A13F0998F8D /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = Localization/ar.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E6BA2A3ED6B0862D4019E730 /* SyntheticEventIdentity.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SyntheticEventIdentity.swift; path = Events/SyntheticEventIdentity.swift; sourceTree = "<group>"; };
+		EC8E192A6C1DD5F01A32CD6E /* MigMouse.entitlements */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.entitlements; name = MigMouse.entitlements; path = Supporting/MigMouse.entitlements; sourceTree = "<group>"; };
+		ECA5CA30AED76DCB21F748D8 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F1F8B9BD1C2A37C13FA255FB /* SystemEventMonitor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SystemEventMonitor.swift; path = Events/SystemEventMonitor.swift; sourceTree = "<group>"; };
+		F6EBC6D35A325E4A32C316E2 /* TouchModels.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TouchModels.swift; path = Models/TouchModels.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		504ADCD54A6583DB14B94CFB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10C15E56CB04D17679A4E853 /* Cocoa.framework in Frameworks */,
+				52043F66F48E377F45F79997 /* AppKit.framework in Frameworks */,
+				9D5D75CF5B2D7D814260E540 /* ApplicationServices.framework in Frameworks */,
+				2D39A5E0F4E0123696D07037 /* CoreGraphics.framework in Frameworks */,
+				1FA3B25AA7857BF67CB4755E /* Foundation.framework in Frameworks */,
+				D2350F6420E2A1FEC7029EB0 /* SwiftUI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5F7C3080475A8D7248668C82 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9A9582444973FC7FD123BAD /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2BF201CAFBD11D8AF9268A4E /* MigMouseTests */ = {
+			isa = PBXGroup;
+			children = (
+				20D99CDD87856CF253D7FEC3 /* TapRecognizerTests.swift */,
+			);
+			name = MigMouseTests;
+			path = MigMouseTests;
+			sourceTree = "<group>";
+		};
+		4E72CC255D141FD98F62A280 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				426E30186F5FD68D473DF5FC /* Localizable.strings */,
+			);
+			name = Localization;
+			path = Localization;
+			sourceTree = "<group>";
+		};
+		641D64FF5D3CFDB4479E0DD7 /* OS X */ = {
+			isa = PBXGroup;
+			children = (
+				ACDF9EB62701CE17F5360D70 /* Cocoa.framework */,
+			);
+			name = "OS X";
+			sourceTree = "<group>";
+		};
+		9498AC9707DAC93DB6450EFD /* MigMouse */ = {
+			isa = PBXGroup;
+			children = (
+				2FB02074D74A3C83B7334E79 /* AppRuntime.swift */,
+				5A05F4F4DBFBAA95DFDBE213 /* MigMouseApp.swift */,
+				A04637DB9E8DCEF075381F22 /* MouseEventSynthesizer.swift */,
+				E6BA2A3ED6B0862D4019E730 /* SyntheticEventIdentity.swift */,
+				F1F8B9BD1C2A37C13FA255FB /* SystemEventMonitor.swift */,
+				AD8AA50DD4EBA8CFD87A2F0F /* GestureConfiguration.swift */,
+				CC58EF6E23035A4291551236 /* TapRecognizer.swift */,
+				32A21DAEE655FFB1FC77A389 /* Localization.swift */,
+				E6381BCF968A9A13F0998F8D /* Localizable.strings */,
+				C0668D94A84236D7DF30C72B /* Localizable.strings */,
+				CD2E76B3C188E51838C95A4A /* Localizable.strings */,
+				4DE090A624462413D328BBB8 /* Localizable.strings */,
+				A368F1CD1908C2C80B8DF72B /* Localizable.strings */,
+				2251385EE2D420A849AFD1AE /* Localizable.strings */,
+				BDE8386F6DB99DFB5ED14F46 /* Localizable.strings */,
+				6AE4A9CCFDD196F1668B68C2 /* Localizable.strings */,
+				244E5FA72F6FAD77DC194CEF /* Localizable.strings */,
+				A6B12BE52C52CB2964444EE8 /* Localizable.strings */,
+				C3355B33C50E3D86993516DC /* Localizable.strings */,
+				01BDDB8F593790DDA7BA9527 /* Localizable.strings */,
+				F6EBC6D35A325E4A32C316E2 /* TouchModels.swift */,
+				45E2C9DECA0568809B7AB408 /* MMMultitouchBridge.h */,
+				D4282558B32BD919EA682343 /* MMMultitouchBridge.m */,
+				75BD40FC9664EF44E9823970 /* MultitouchSupportTypes.h */,
+				26DD2516618D4452FF312087 /* PermissionManager.swift */,
+				6D1BA4F6A7457893259F0E63 /* Info.plist */,
+				2CA9CF07AFA9285B9EF5F572 /* MigMouse-Bridging-Header.h */,
+				EC8E192A6C1DD5F01A32CD6E /* MigMouse.entitlements */,
+				0D73CBEA14F8A48B44DAD064 /* MenuBarContent.swift */,
+				0D5824AC70467805BE39E032 /* SettingsView.swift */,
+				1C7046B9BE453C3DB4D57DB6 /* TouchSurfaceView.swift */,
+				4E72CC255D141FD98F62A280 /* Localization */,
+			);
+			name = MigMouse;
+			path = MigMouse;
+			sourceTree = "<group>";
+		};
+		A232D48764B1795FE5B56718 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				816454572E37C9C017E88023 /* MigMouse.app */,
+				78644C631976FFC1939CA375 /* MigMouseTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BAE7CDBB2141B9F5A6921232 = {
+			isa = PBXGroup;
+			children = (
+				A232D48764B1795FE5B56718 /* Products */,
+				E75167C4454C026C63B81696 /* Frameworks */,
+				9498AC9707DAC93DB6450EFD /* MigMouse */,
+				2BF201CAFBD11D8AF9268A4E /* MigMouseTests */,
+			);
+			sourceTree = "<group>";
+		};
+		E75167C4454C026C63B81696 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				641D64FF5D3CFDB4479E0DD7 /* OS X */,
+				70755F0241F469377F9F6418 /* AppKit.framework */,
+				8FD66107A90FB8F8B35D8382 /* ApplicationServices.framework */,
+				810D531A8D3154DCECDB1050 /* CoreGraphics.framework */,
+				68ABA0A6475B6639BF13EE97 /* Foundation.framework */,
+				A8CEDEEDBBFFBB4BE6BD0C18 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		08D5615E9927546BF68989A3 /* MigMouse */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 510329295B77E07D86CC48B9 /* Build configuration list for PBXNativeTarget "MigMouse" */;
+			buildPhases = (
+				A2495411732A963F66C6D2B4 /* Sources */,
+				504ADCD54A6583DB14B94CFB /* Frameworks */,
+				0E02C42BF5B34C017FAAFE79 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MigMouse;
+			productName = MigMouse;
+			productReference = 816454572E37C9C017E88023 /* MigMouse.app */;
+			productType = "com.apple.product-type.application";
+		};
+		7DB0377D26019987C11AEA83 /* MigMouseTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 89AC0021DF92EC5A47642FD3 /* Build configuration list for PBXNativeTarget "MigMouseTests" */;
+			buildPhases = (
+				8B798B4D9EBB015836DD5E24 /* Sources */,
+				5F7C3080475A8D7248668C82 /* Frameworks */,
+				D816FDEC1A4CBABB00E8BC29 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B3C6EF9B60963E35182FDC85 /* PBXTargetDependency */,
+			);
+			name = MigMouseTests;
+			productName = MigMouseTests;
+			productReference = 78644C631976FFC1939CA375 /* MigMouseTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C39D8DDC6962876580B518AA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 2660;
+				LastUpgradeCheck = 2660;
+			};
+			buildConfigurationList = 7288744632E8E80DA31F3B88 /* Build configuration list for PBXProject "MigMouse" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				"zh-Hans",
+				"zh-Hant",
+				ja,
+				ko,
+				fr,
+				de,
+				es,
+				"pt-BR",
+				it,
+				ru,
+				ar,
+				Base,
+			);
+			mainGroup = BAE7CDBB2141B9F5A6921232;
+			minimizedProjectReferenceProxies = 0;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = A232D48764B1795FE5B56718 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				08D5615E9927546BF68989A3 /* MigMouse */,
+				7DB0377D26019987C11AEA83 /* MigMouseTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0E02C42BF5B34C017FAAFE79 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FE5F129A3E731A0A341C615C /* Localizable.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D816FDEC1A4CBABB00E8BC29 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8B798B4D9EBB015836DD5E24 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDD3E2C3EAA75FEDE9E630D1 /* TapRecognizerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A2495411732A963F66C6D2B4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA9273028CDD691CD1419A88 /* AppRuntime.swift in Sources */,
+				43C7C876C3C535051DEA5371 /* MigMouseApp.swift in Sources */,
+				DE2EC731782D0FCEF8BD0919 /* MouseEventSynthesizer.swift in Sources */,
+				4AADDCEFE1C5C1AC52254709 /* SyntheticEventIdentity.swift in Sources */,
+				5FB01F46860DBF0B1B466743 /* SystemEventMonitor.swift in Sources */,
+				6B43CBDD1B585F301DC12133 /* GestureConfiguration.swift in Sources */,
+				9777E554FF7F20117A049ADA /* TapRecognizer.swift in Sources */,
+				1AD04534D917A77D45CB99C6 /* Localization.swift in Sources */,
+				01929E026C62B165BAF03745 /* TouchModels.swift in Sources */,
+				F6DCA255EE2C3B08876A3749 /* MMMultitouchBridge.m in Sources */,
+				8F7D06BF44DCBD43B0E00931 /* PermissionManager.swift in Sources */,
+				C3F7FCF46E9A649B74545642 /* MenuBarContent.swift in Sources */,
+				207CEF0A30782313FAA74436 /* SettingsView.swift in Sources */,
+				5140F980A692E5F457ECB02B /* TouchSurfaceView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B3C6EF9B60963E35182FDC85 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MigMouse;
+			target = 08D5615E9927546BF68989A3 /* MigMouse */;
+			targetProxy = 690A4D043CB397357F082C7D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		426E30186F5FD68D473DF5FC /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7A83DD65B98556EA56A5E972 /* Localizable.strings */,
+				874A5555D461BD63FA97889B /* Localizable.strings */,
+				6F8227D4E4EEB44AA10BE267 /* Localizable.strings */,
+				4FE4F47D043BD3E351CBA09A /* Localizable.strings */,
+				B0162F8C730030E1DC01BCA6 /* Localizable.strings */,
+				76301DAE789908F235372E68 /* Localizable.strings */,
+				27A57AD7981A703D8264DA46 /* Localizable.strings */,
+				01E185C17DB14361EC60459E /* Localizable.strings */,
+				4214A0FBAD8307082899F813 /* Localizable.strings */,
+				ECA5CA30AED76DCB21F748D8 /* Localizable.strings */,
+				0E08D5BE45A953426912802B /* Localizable.strings */,
+				6E8EE2983A991500751F2064 /* Localizable.strings */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		16F7873554052CC7196ECF55 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.github.eric-kbo.migmouse.tests";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MigMouse.app/Contents/MacOS/MigMouse";
+			};
+			name = Debug;
+		};
+		1D88F8A238F02DD3B257974E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		7640570CA5868EC466D57002 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_ENTITLEMENTS = MigMouse/Supporting/MigMouse.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_APP_SANDBOX = NO;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = MigMouse/Supporting/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.github.eric-kbo.migmouse";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_OBJC_BRIDGING_HEADER = "MigMouse/Supporting/MigMouse-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		C0E8DEF65EFD2B28C572C801 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		EBF69DAF6F5668E719482DE8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_ENTITLEMENTS = MigMouse/Supporting/MigMouse.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_APP_SANDBOX = NO;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = MigMouse/Supporting/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.github.eric-kbo.migmouse";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_OBJC_BRIDGING_HEADER = "MigMouse/Supporting/MigMouse-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		FAC68E2141C4FCE6E1222671 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.github.eric-kbo.migmouse.tests";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MigMouse.app/Contents/MacOS/MigMouse";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		510329295B77E07D86CC48B9 /* Build configuration list for PBXNativeTarget "MigMouse" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EBF69DAF6F5668E719482DE8 /* Release */,
+				7640570CA5868EC466D57002 /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7288744632E8E80DA31F3B88 /* Build configuration list for PBXProject "MigMouse" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D88F8A238F02DD3B257974E /* Debug */,
+				C0E8DEF65EFD2B28C572C801 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		89AC0021DF92EC5A47642FD3 /* Build configuration list for PBXNativeTarget "MigMouseTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FAC68E2141C4FCE6E1222671 /* Release */,
+				16F7873554052CC7196ECF55 /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C39D8DDC6962876580B518AA /* Project object */;
+}

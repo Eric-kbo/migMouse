@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420" role="img" aria-labelledby="title desc">
+  <title id="title">MigMouse</title>
+  <desc id="desc">Trackpad-style tapping for Apple Magic Mouse</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#111827"/>
+      <stop offset="0.5" stop-color="#312e81"/>
+      <stop offset="1" stop-color="#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="mouse" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.98"/>
+      <stop offset="1" stop-color="#dbeafe" stop-opacity="0.9"/>
+    </linearGradient>
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#020617" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="420" rx="32" fill="url(#bg)"/>
+  <circle cx="1025" cy="50" r="190" fill="#a78bfa" opacity="0.12"/>
+  <circle cx="1110" cy="350" r="240" fill="#38bdf8" opacity="0.08"/>
+  <path d="M0 330 C220 260 330 430 570 345 S940 260 1200 355 V420 H0Z" fill="#ffffff" opacity="0.045"/>
+
+  <g filter="url(#shadow)">
+    <path d="M134 297 C134 176 181 95 265 95 C349 95 396 176 396 297 C396 335 365 365 327 365 H203 C165 365 134 335 134 297Z" fill="url(#mouse)"/>
+    <path d="M265 96 V202" stroke="#8b5cf6" stroke-width="3" opacity="0.42"/>
+    <circle cx="225" cy="171" r="14" fill="#8b5cf6" opacity="0.9"/>
+    <circle cx="306" cy="171" r="14" fill="#38bdf8" opacity="0.88"/>
+    <circle cx="225" cy="171" r="25" fill="none" stroke="#8b5cf6" stroke-width="2" opacity="0.28"/>
+    <circle cx="306" cy="171" r="25" fill="none" stroke="#38bdf8" stroke-width="2" opacity="0.28"/>
+  </g>
+
+  <g fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">
+    <text x="480" y="165" font-size="72" font-weight="750" letter-spacing="-2">MigMouse</text>
+    <text x="484" y="216" font-size="25" opacity="0.75">Trackpad-style tapping for Magic Mouse</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16" font-weight="600">
+    <g transform="translate(484 266)">
+      <rect width="150" height="42" rx="21" fill="#ffffff" opacity="0.12"/>
+      <text x="22" y="27" fill="#ddd6fe">tap → click</text>
+    </g>
+    <g transform="translate(650 266)">
+      <rect width="222" height="42" rx="21" fill="#ffffff" opacity="0.12"/>
+      <text x="20" y="27" fill="#bae6fd">two fingers → right</text>
+    </g>
+  </g>
+</svg>
