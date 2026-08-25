@@ -30,6 +30,11 @@ final class AppRuntime: ObservableObject {
         let configuration = Self.loadConfiguration()
         self.configuration = configuration
         self.recognizer = TapRecognizer(configuration: configuration)
+        // An application-hosted XCTest bundle launches the app before running
+        // logic tests. Starting MultitouchSupport in that process would take
+        // control of the same physical device as a running MigMouse instance;
+        // stopping the test host can then silence the live app's callbacks.
+        guard !Self.isRunningTests else { return }
         start()
     }
 
@@ -159,5 +164,9 @@ final class AppRuntime: ObservableObject {
             return .default
         }
         return value
+    }
+
+    private static var isRunningTests: Bool {
+        ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
     }
 }

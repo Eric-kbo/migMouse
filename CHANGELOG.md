@@ -4,6 +4,11 @@ All notable changes to MigMouse will be documented here.
 
 ## [Unreleased]
 
+### Fixed
+
+- Prevent app-hosted unit tests from starting and stopping the real Magic Mouse touch device used by another running MigMouse instance
+- Preserve the original application bundle identifier so existing macOS permissions remain valid across source builds
+
 ### Planned
 
 - Tap-and-drag and drag lock

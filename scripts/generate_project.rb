@@ -50,7 +50,7 @@ end
 
 app.build_configurations.each do |config|
   settings = config.build_settings
-  settings["PRODUCT_BUNDLE_IDENTIFIER"] = "io.github.eric-kbo.migmouse"
+  settings["PRODUCT_BUNDLE_IDENTIFIER"] = "com.zhouxingbang.MigMouse"
   settings["PRODUCT_NAME"] = "$(TARGET_NAME)"
   settings["INFOPLIST_FILE"] = "MigMouse/Supporting/Info.plist"
   settings["CODE_SIGN_ENTITLEMENTS"] = "MigMouse/Supporting/MigMouse.entitlements"
@@ -66,7 +66,7 @@ end
 
 tests.build_configurations.each do |config|
   settings = config.build_settings
-  settings["PRODUCT_BUNDLE_IDENTIFIER"] = "io.github.eric-kbo.migmouse.tests"
+  settings["PRODUCT_BUNDLE_IDENTIFIER"] = "com.zhouxingbang.MigMouseTests"
   settings["GENERATE_INFOPLIST_FILE"] = "YES"
   settings["SWIFT_VERSION"] = "5.0"
   settings["MACOSX_DEPLOYMENT_TARGET"] = "14.0"
