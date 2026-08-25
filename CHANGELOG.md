@@ -4,19 +4,22 @@ All notable changes to MigMouse will be documented here.
 
 ## [Unreleased]
 
+### Planned
+
+- Personalized touch calibration
+- Additional trackpad-style gestures
+
+## [0.1.1] - 2026-08-25
+
 ### Added
 
 - Two-finger pinch-to-zoom using native macOS magnification events
+- Developer ID signed and Apple-notarized release packaging
 
 ### Fixed
 
 - Prevent app-hosted unit tests from starting and stopping the real Magic Mouse touch device used by another running MigMouse instance
 - Preserve the original application bundle identifier so existing macOS permissions remain valid across source builds
-
-### Planned
-
-- Personalized touch calibration
-- Additional trackpad-style gestures
 
 ## [0.1.0] - 2026-08-25
 
@@ -33,5 +36,6 @@ All notable changes to MigMouse will be documented here.
 - Localizations for 12 languages
 - Gesture-recognizer unit tests
 
-[Unreleased]: https://github.com/Eric-kbo/migMouse/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/Eric-kbo/migMouse/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/Eric-kbo/migMouse/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/Eric-kbo/migMouse/releases/tag/v0.1.0

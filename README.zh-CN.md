@@ -37,6 +37,12 @@ Magic Mouse 有一整块出色的多点触控表面，但 macOS 没有给它提�
 - 辅助功能与输入监控权限
 - 从源码构建需要 Xcode 16 或更高版本
 
+## 下载与安装
+
+从 [GitHub Releases](https://github.com/Eric-kbo/migMouse/releases) 下载最新的 `MigMouse-v*.zip`，解压后把 `MigMouse.app` 移入“应用程序”。发布包已经过 Developer ID 签名和 Apple 公证，可以正常双击打开，不需要在“隐私与安全性”中点击“仍要打开”。
+
+首次启动时，macOS 仍会要求授予“辅助功能”和“输入监控”权限。这是 MigMouse 读取 Magic Mouse 触摸并产生点击所必需的系统隐私权限；授权完成后退出并重新打开 MigMouse 即可。
+
 ## 构建与运行
 
 1. 克隆仓库，用 Xcode 打开 `MigMouse.xcodeproj`。
@@ -73,6 +79,8 @@ MigMouse 运行时加载 Apple 私有的 `MultitouchSupport.framework` 读取触
 ## 参与贡献
 
 欢迎提交 Issue 和 Pull Request。开始之前请阅读 [CONTRIBUTING.md](CONTRIBUTING.md)。
+
+维护者可在 [docs/RELEASING.md](docs/RELEASING.md) 查看签名、公证和发布流程。
 
 ## 开源许可
 

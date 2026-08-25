@@ -38,6 +38,12 @@ Magic Mouse has an excellent multi-touch surface, yet macOS does not offer the t
 - Accessibility and Input Monitoring permission
 - Xcode 16 or later to build from source
 
+## Download and install
+
+Download the latest `MigMouse-v*.zip` from [GitHub Releases](https://github.com/Eric-kbo/migMouse/releases), unzip it, and move `MigMouse.app` to Applications. Releases are signed with Developer ID and notarized by Apple, so they open normally without using **Open Anyway**.
+
+On first launch, macOS still asks you to grant Accessibility and Input Monitoring access. These privacy permissions are required for MigMouse to read Magic Mouse touches and emit clicks; quit and reopen MigMouse after granting them.
+
 ## Build and run
 
 1. Clone this repository and open `MigMouse.xcodeproj` in Xcode.
@@ -87,6 +93,8 @@ Because MigMouse depends on an undocumented Apple framework, a future macOS upda
 ## Contributing
 
 Issues and pull requests are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) before contributing.
+
+Maintainers can find the signed and notarized release process in [docs/RELEASING.md](docs/RELEASING.md).
 
 ## License
 

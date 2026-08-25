@@ -8,3 +8,4 @@ xcuserdata/
 *.ipa
 *.dSYM
 *.dSYM.zip
+dist/
