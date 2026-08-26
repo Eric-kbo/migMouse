@@ -16,7 +16,6 @@ typedef void (^MMTouchFrameBlock)(const MMMTouch * _Nullable touches,
 @property(nonatomic, copy, readonly) NSString *statusMessage;
 
 - (BOOL)startWithFrameHandler:(MMTouchFrameBlock)handler;
-- (void)stop;
 
 @end
 

@@ -6,14 +6,12 @@ typedef CFArrayRef (*MMCreateDeviceListFunction)(void);
 typedef void (*MMRegisterCallbackFunction)(MMMTDeviceRef, MMMTFrameCallback, void *);
 typedef void (*MMUnregisterCallbackFunction)(MMMTDeviceRef, MMMTFrameCallback, void *);
 typedef int32_t (*MMStartDeviceFunction)(MMMTDeviceRef, int32_t);
-typedef void (*MMStopDeviceFunction)(MMMTDeviceRef);
 typedef bool (*MMIsBuiltInFunction)(MMMTDeviceRef);
 typedef int32_t (*MMGetFamilyIDFunction)(MMMTDeviceRef, int32_t *);
 
 @interface MMMultitouchBridge () {
     void *_framework;
     MMUnregisterCallbackFunction _unregisterCallback;
-    MMStopDeviceFunction _stopDevice;
     NSMutableArray<NSValue *> *_devices;
 }
 
@@ -53,10 +51,6 @@ static void MMFrameworkCallback(MMMTDeviceRef device,
     return self;
 }
 
-- (void)dealloc {
-    [self stop];
-}
-
 - (BOOL)startWithFrameHandler:(MMTouchFrameBlock)handler {
     if (self.running) {
         self.frameHandler = handler;
@@ -78,13 +72,12 @@ static void MMFrameworkCallback(MMMTDeviceRef device,
         (MMUnregisterCallbackFunction)dlsym(_framework, "MTUnregisterContactFrameCallbackWithRefcon");
     MMStartDeviceFunction startDevice =
         (MMStartDeviceFunction)dlsym(_framework, "MTDeviceStart");
-    _stopDevice = (MMStopDeviceFunction)dlsym(_framework, "MTDeviceStop");
     MMIsBuiltInFunction isBuiltIn =
         (MMIsBuiltInFunction)dlsym(_framework, "MTDeviceIsBuiltIn");
     MMGetFamilyIDFunction getFamilyID =
         (MMGetFamilyIDFunction)dlsym(_framework, "MTDeviceGetFamilyID");
 
-    if (!createDeviceList || !registerCallback || !startDevice || !_stopDevice) {
+    if (!createDeviceList || !registerCallback || !startDevice) {
         self.statusMessage = NSLocalizedString(@"framework_symbols_unavailable", nil);
         dlclose(_framework);
         _framework = NULL;
@@ -140,32 +133,6 @@ static void MMFrameworkCallback(MMMTDeviceRef device,
         _framework = NULL;
     }
     return self.running;
-}
-
-- (void)stop {
-    if (!_framework) {
-        return;
-    }
-
-    for (NSValue *value in _devices) {
-        MMMTDeviceRef device = (MMMTDeviceRef)value.pointerValue;
-        if (_unregisterCallback) {
-            _unregisterCallback(device, MMFrameworkCallback, (__bridge void *)self);
-        }
-        if (_stopDevice) {
-            _stopDevice(device);
-        }
-    }
-    [_devices removeAllObjects];
-    self.frameHandler = nil;
-    self.running = NO;
-    self.activeDeviceCount = 0;
-    self.statusMessage = NSLocalizedString(@"stopped", nil);
-
-    dlclose(_framework);
-    _framework = NULL;
-    _unregisterCallback = NULL;
-    _stopDevice = NULL;
 }
 
 - (void)receiveTouches:(const MMMTouch *)touches

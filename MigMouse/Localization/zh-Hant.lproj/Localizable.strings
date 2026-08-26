@@ -23,7 +23,7 @@
 "tap_to_click_title" = "輕點來點按";
 "grant_permissions" = "授予權限…";
 "settings" = "設定…";
-"reconnect_magic_mouse" = "重新連接 Magic Mouse";
+"reconnect_magic_mouse" = "重新啟動 MigMouse";
 "quit_migmouse" = "結束 MigMouse";
 "point_and_click" = "游標與點按";
 "diagnostics" = "診斷";
@@ -44,7 +44,7 @@
 "last_tap_format" = "上次：%@，%ld 指";
 "last_rejected_format" = "上次未辨識觸控：%@";
 "request_permissions" = "要求權限";
-"reconnect" = "重新連接";
+"reconnect" = "重新啟動";
 "permission_detail_format" = "監聽：%@ · 傳送：%@";
 "yes" = "是";
 "no" = "否";
@@ -57,3 +57,9 @@
 "complete_setup" = "完成設定";
 "setup_required" = "需要完成設定";
 "ready" = "MigMouse 已就緒";
+"launch_at_login" = "登入時啟動";
+"launch_at_login_description" = "登入 Mac 時自動開啟 MigMouse。";
+"login_item_approval_required" = "需要在「登入項目」中允許。";
+"open_login_item_settings" = "開啟登入項目設定";
+"restarting" = "正在重新啟動 MigMouse…";
+"restart_failed" = "MigMouse 無法重新啟動";

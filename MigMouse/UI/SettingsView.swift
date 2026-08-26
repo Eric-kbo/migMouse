@@ -63,6 +63,36 @@ struct SettingsView: View {
             } footer: {
                 Text(L10n.text("recognition_description"))
             }
+
+            Section {
+                Toggle(
+                    L10n.text("launch_at_login"),
+                    isOn: Binding(
+                        get: { runtime.launchAtLoginEnabled },
+                        set: { runtime.setLaunchAtLogin($0) }
+                    )
+                )
+
+                if runtime.launchAtLoginRequiresApproval {
+                    HStack {
+                        Label(
+                            L10n.text("login_item_approval_required"),
+                            systemImage: "exclamationmark.triangle"
+                        )
+                        Spacer()
+                        Button(L10n.text("open_login_item_settings")) {
+                            runtime.openLoginItemSettings()
+                        }
+                    }
+                }
+
+                if let error = runtime.launchAtLoginError {
+                    Label(error, systemImage: "xmark.circle")
+                        .foregroundStyle(.red)
+                }
+            } footer: {
+                Text(L10n.text("launch_at_login_description"))
+            }
         }
         .formStyle(.grouped)
     }

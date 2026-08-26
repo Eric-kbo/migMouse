@@ -28,6 +28,7 @@ Magic Mouse has an excellent multi-touch surface, yet macOS does not offer the t
 - Arbitration with scrolling and physical clicks to prevent accidental taps
 - Adjustable timing, movement, pressure, and right-click zone
 - Live touch diagnostics and a synthetic-click test
+- Launch at login and safe process-level recovery after Mac wake
 - Native menu bar app with no network access or analytics
 - System-following UI in 12 languages: English, Simplified and Traditional Chinese, Japanese, Korean, French, German, Spanish, Brazilian Portuguese, Italian, Russian, and Arabic
 

@@ -23,7 +23,7 @@
 "tap_to_click_title" = "Tap to Click";
 "grant_permissions" = "Grant Permissions…";
 "settings" = "Settings…";
-"reconnect_magic_mouse" = "Reconnect Magic Mouse";
+"reconnect_magic_mouse" = "Restart MigMouse";
 "quit_migmouse" = "Quit MigMouse";
 "point_and_click" = "Point & Click";
 "diagnostics" = "Diagnostics";
@@ -44,7 +44,7 @@
 "last_tap_format" = "Last: %@, %ld finger(s)";
 "last_rejected_format" = "Last rejected touch: %@";
 "request_permissions" = "Request Permissions";
-"reconnect" = "Reconnect";
+"reconnect" = "Restart";
 "permission_detail_format" = "Listen: %@ · Post: %@";
 "yes" = "yes";
 "no" = "no";
@@ -57,3 +57,9 @@
 "complete_setup" = "Complete Setup";
 "setup_required" = "Setup required";
 "ready" = "MigMouse is ready";
+"launch_at_login" = "Launch at login";
+"launch_at_login_description" = "Automatically open MigMouse when you sign in to your Mac.";
+"login_item_approval_required" = "Approval is required in Login Items.";
+"open_login_item_settings" = "Open Login Items";
+"restarting" = "Restarting MigMouse…";
+"restart_failed" = "MigMouse could not restart";

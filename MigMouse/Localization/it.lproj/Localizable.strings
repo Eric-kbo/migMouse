@@ -23,7 +23,7 @@
 "tap_to_click_title"="Tocca per fare clic";
 "grant_permissions"="Concedi autorizzazioni…";
 "settings"="Impostazioni…";
-"reconnect_magic_mouse"="Riconnetti Magic Mouse";
+"reconnect_magic_mouse"="Riavvia MigMouse";
 "quit_migmouse"="Esci da MigMouse";
 "point_and_click"="Punta e fai clic";
 "diagnostics"="Diagnostica";
@@ -44,7 +44,7 @@
 "last_tap_format"="Ultimo: %@, %ld dito/i";
 "last_rejected_format"="Ultimo tocco rifiutato: %@";
 "request_permissions"="Richiedi autorizzazioni";
-"reconnect"="Riconnetti";
+"reconnect"="Riavvia";
 "permission_detail_format"="Ascolto: %@ · Invio: %@";
 "yes"="sì";
 "no"="no";
@@ -57,3 +57,9 @@
 "complete_setup"="Completa configurazione";
 "setup_required"="Configurazione richiesta";
 "ready"="MigMouse è pronto";
+"launch_at_login"="Apri all’accesso";
+"launch_at_login_description"="Apre automaticamente MigMouse quando accedi al Mac.";
+"login_item_approval_required"="È richiesta l’approvazione negli elementi di login.";
+"open_login_item_settings"="Apri elementi di login";
+"restarting"="Riavvio di MigMouse…";
+"restart_failed"="Impossibile riavviare MigMouse";

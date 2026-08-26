@@ -23,7 +23,7 @@
 "tap_to_click_title"="Касание для нажатия";
 "grant_permissions"="Предоставить доступ…";
 "settings"="Настройки…";
-"reconnect_magic_mouse"="Переподключить Magic Mouse";
+"reconnect_magic_mouse"="Перезапустить MigMouse";
 "quit_migmouse"="Завершить MigMouse";
 "point_and_click"="Указание и нажатие";
 "diagnostics"="Диагностика";
@@ -44,7 +44,7 @@
 "last_tap_format"="Последнее: %@, пальцев: %ld";
 "last_rejected_format"="Последнее отклонённое касание: %@";
 "request_permissions"="Запросить доступ";
-"reconnect"="Переподключить";
+"reconnect"="Перезапустить";
 "permission_detail_format"="Чтение: %@ · Отправка: %@";
 "yes"="да";
 "no"="нет";
@@ -57,3 +57,9 @@
 "complete_setup"="Завершить настройку";
 "setup_required"="Требуется настройка";
 "ready"="MigMouse готов";
+"launch_at_login"="Запускать при входе";
+"launch_at_login_description"="Автоматически открывает MigMouse при входе в систему на Mac.";
+"login_item_approval_required"="Требуется разрешение в разделе объектов входа.";
+"open_login_item_settings"="Открыть объекты входа";
+"restarting"="Перезапуск MigMouse…";
+"restart_failed"="Не удалось перезапустить MigMouse";

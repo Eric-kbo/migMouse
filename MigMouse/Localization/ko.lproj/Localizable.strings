@@ -23,7 +23,7 @@
 "tap_to_click_title" = "탭하여 클릭";
 "grant_permissions" = "권한 허용…";
 "settings" = "설정…";
-"reconnect_magic_mouse" = "Magic Mouse 다시 연결";
+"reconnect_magic_mouse" = "MigMouse 다시 시작";
 "quit_migmouse" = "MigMouse 종료";
 "point_and_click" = "포인트 및 클릭";
 "diagnostics" = "진단";
@@ -44,7 +44,7 @@
 "last_tap_format" = "최근: %@, 손가락 %ld개";
 "last_rejected_format" = "최근 제외된 접촉: %@";
 "request_permissions" = "권한 요청";
-"reconnect" = "다시 연결";
+"reconnect" = "다시 시작";
 "permission_detail_format" = "수신: %@ · 전송: %@";
 "yes" = "예";
 "no" = "아니요";
@@ -57,3 +57,9 @@
 "complete_setup" = "설정 완료";
 "setup_required" = "설정 필요";
 "ready" = "MigMouse 준비됨";
+"launch_at_login" = "로그인 시 실행";
+"launch_at_login_description" = "Mac에 로그인할 때 MigMouse를 자동으로 엽니다.";
+"login_item_approval_required" = "로그인 항목에서 승인이 필요합니다.";
+"open_login_item_settings" = "로그인 항목 열기";
+"restarting" = "MigMouse를 다시 시작하는 중…";
+"restart_failed" = "MigMouse를 다시 시작할 수 없습니다";

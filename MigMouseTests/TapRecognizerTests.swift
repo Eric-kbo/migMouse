@@ -104,43 +104,52 @@ final class TapRecognizerTests: XCTestCase {
         XCTAssertFalse(movement.suppressesNativeScroll)
     }
 
-    func testHealthPolicyReconnectsForRecentPointerMotionWithoutTouchFrames() {
-        let policy = TouchConnectionHealthPolicy()
+    func testRelaunchCommandPassesTheApplicationPathAsASeparateArgument() throws {
+        let applicationURL = URL(fileURLWithPath: "/Applications/Mig Mouse's.app")
 
-        XCTAssertTrue(policy.shouldReconnect(
-            now: 20,
-            lastPointerMovement: 19.5,
-            lastTouchFrame: 15,
-            lastReconnect: 10,
-            isEnabled: true,
-            isBridgeRunning: true
-        ))
+        let command = try ApplicationRelaunchCommand.make(for: applicationURL)
+
+        XCTAssertEqual(command.executableURL.path, "/bin/sh")
+        XCTAssertEqual(command.arguments[1], "sleep 1; exec /usr/bin/open -n \"$1\"")
+        XCTAssertEqual(command.arguments.last, applicationURL.path)
     }
 
-    func testHealthPolicyDoesNotReconnectWhenTouchFramesAreCurrent() {
-        let policy = TouchConnectionHealthPolicy()
+    func testRelaunchCommandRejectsTranslocatedApplication() {
+        let applicationURL = URL(
+            fileURLWithPath: "/private/var/folders/x/AppTranslocation/ABC/d/MigMouse.app"
+        )
 
-        XCTAssertFalse(policy.shouldReconnect(
-            now: 20,
-            lastPointerMovement: 19.5,
-            lastTouchFrame: 19,
-            lastReconnect: nil,
-            isEnabled: true,
-            isBridgeRunning: true
-        ))
+        XCTAssertThrowsError(try ApplicationRelaunchCommand.make(for: applicationURL))
     }
 
-    func testHealthPolicyThrottlesAutomaticReconnects() {
-        let policy = TouchConnectionHealthPolicy()
+    func testLaunchAtLoginOpensSettingsWhenApprovalIsRequired() {
+        XCTAssertEqual(
+            LaunchAtLoginPolicy.action(
+                desiredEnabled: true,
+                currentStatus: .requiresApproval
+            ),
+            .openSystemSettings
+        )
+    }
 
-        XCTAssertFalse(policy.shouldReconnect(
-            now: 20,
-            lastPointerMovement: 19.5,
-            lastTouchFrame: nil,
-            lastReconnect: 15,
-            isEnabled: true,
-            isBridgeRunning: true
-        ))
+    func testLaunchAtLoginRegistersWhenNotRegistered() {
+        XCTAssertEqual(
+            LaunchAtLoginPolicy.action(
+                desiredEnabled: true,
+                currentStatus: .notRegistered
+            ),
+            .register
+        )
+    }
+
+    func testLaunchAtLoginCanCancelPendingApproval() {
+        XCTAssertEqual(
+            LaunchAtLoginPolicy.action(
+                desiredEnabled: false,
+                currentStatus: .requiresApproval
+            ),
+            .unregister
+        )
     }
 
     private func testingConfiguration() -> GestureConfiguration {

@@ -104,8 +104,14 @@ for attempt in {1..120}; do
   sleep 15
 done
 
-APP_PATH="$NOTARIZED_PATH/MigMouse.app"
-test -d "$APP_PATH"
+EXPORTED_APP_PATH="$NOTARIZED_PATH/MigMouse.app"
+APP_PATH="$TEMP_DIR/MigMouse.app"
+test -d "$EXPORTED_APP_PATH"
+
+# Validate and package from the local temporary directory. A file provider can
+# immediately restore Finder metadata on the repository's dist directory after
+# it is removed, which races strict code-signature validation.
+ditto "$EXPORTED_APP_PATH" "$APP_PATH"
 
 # Finder can attach this metadata when the output directory is synced by a
 # file provider. It is not application content and strict code validation

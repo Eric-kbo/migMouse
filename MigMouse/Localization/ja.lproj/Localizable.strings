@@ -23,7 +23,7 @@
 "tap_to_click_title" = "タップでクリック";
 "grant_permissions" = "権限を許可…";
 "settings" = "設定…";
-"reconnect_magic_mouse" = "Magic Mouseを再接続";
+"reconnect_magic_mouse" = "MigMouseを再起動";
 "quit_migmouse" = "MigMouseを終了";
 "point_and_click" = "ポイントとクリック";
 "diagnostics" = "診断";
@@ -44,7 +44,7 @@
 "last_tap_format" = "前回：%@、%ld本指";
 "last_rejected_format" = "前回除外した接触：%@";
 "request_permissions" = "権限を要求";
-"reconnect" = "再接続";
+"reconnect" = "再起動";
 "permission_detail_format" = "監視：%@ · 送信：%@";
 "yes" = "はい";
 "no" = "いいえ";
@@ -57,3 +57,9 @@
 "complete_setup" = "設定を完了";
 "setup_required" = "設定が必要です";
 "ready" = "MigMouseは準備完了です";
+"launch_at_login" = "ログイン時に起動";
+"launch_at_login_description" = "Macへのログイン時にMigMouseを自動的に開きます。";
+"login_item_approval_required" = "ログイン項目での許可が必要です。";
+"open_login_item_settings" = "ログイン項目を開く";
+"restarting" = "MigMouseを再起動しています…";
+"restart_failed" = "MigMouseを再起動できませんでした";

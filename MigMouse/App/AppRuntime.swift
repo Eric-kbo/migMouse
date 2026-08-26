@@ -1,6 +1,8 @@
 import AppKit
 import Combine
+import Darwin
 import Foundation
+import ServiceManagement
 
 @MainActor
 final class AppRuntime: ObservableObject {
@@ -21,6 +23,9 @@ final class AppRuntime: ObservableObject {
     @Published var recognizedTapCount = 0
     @Published var postedClickCount = 0
     @Published var recognizedPinchCount = 0
+    @Published private(set) var launchAtLoginEnabled = false
+    @Published private(set) var launchAtLoginRequiresApproval = false
+    @Published private(set) var launchAtLoginError: String?
     @Published var configuration: GestureConfiguration {
         didSet {
             recognizer.configuration = configuration
@@ -37,9 +42,7 @@ final class AppRuntime: ObservableObject {
     private var pinchRecognizer: PinchGestureRecognizer
     private var permissionTimer: Timer?
     private var workspaceObservers: [NSObjectProtocol] = []
-    private var lastTouchFrameTimestamp: TimeInterval?
-    private var lastAutomaticReconnectTimestamp: TimeInterval?
-    private let healthPolicy = TouchConnectionHealthPolicy()
+    private var restartScheduled = false
 
     init() {
         let configuration = Self.loadConfiguration()
@@ -51,6 +54,7 @@ final class AppRuntime: ObservableObject {
         // control of the same physical device as a running MigMouse instance;
         // stopping the test host can then silence the live app's callbacks.
         guard !Self.isRunningTests else { return }
+        configureLaunchAtLogin()
         installLifecycleObservers()
         start()
     }
@@ -75,22 +79,14 @@ final class AppRuntime: ObservableObject {
                 if self.permissionState.canListen {
                     _ = self.systemEvents.start()
                 }
+                self.refreshLaunchAtLoginStatus()
                 self.startBridgeIfNeeded()
-                self.recoverStaleConnectionIfNeeded()
             }
         }
     }
 
     func restartDeviceDiscovery() {
-        reconnectBridge()
-    }
-
-    private func reconnectBridge() {
-        stopPinchGesture()
-        bridge.stop()
-        recognizer.reset()
-        currentContacts = []
-        startBridgeIfNeeded()
+        restartApplication()
     }
 
     func requestPermissions() {
@@ -103,9 +99,11 @@ final class AppRuntime: ObservableObject {
     }
 
     func quit() {
-        bridge.stop()
         systemEvents.stop()
-        NSApplication.shared.terminate(nil)
+        // MultitouchSupport owns background threads whose MTDeviceStop teardown
+        // is not safe to race with callbacks. Exiting the process lets macOS
+        // reclaim that private-framework state as one unit.
+        Darwin._exit(EXIT_SUCCESS)
     }
 
     private func handle(
@@ -113,7 +111,6 @@ final class AppRuntime: ObservableObject {
         count: Int,
         timestamp: Double
     ) {
-        lastTouchFrameTimestamp = ProcessInfo.processInfo.systemUptime
         var contacts: [TouchContact] = []
         if let touches, count > 0 {
             contacts.reserveCapacity(count)
@@ -210,21 +207,6 @@ final class AppRuntime: ObservableObject {
         refreshBridgeStatus()
     }
 
-    private func recoverStaleConnectionIfNeeded() {
-        let now = ProcessInfo.processInfo.systemUptime
-        guard healthPolicy.shouldReconnect(
-            now: now,
-            lastPointerMovement: systemEvents.lastPointerMovementTimestamp,
-            lastTouchFrame: lastTouchFrameTimestamp,
-            lastReconnect: lastAutomaticReconnectTimestamp,
-            isEnabled: enabled,
-            isBridgeRunning: bridge.isRunning
-        ) else { return }
-
-        lastAutomaticReconnectTimestamp = now
-        reconnectBridge()
-    }
-
     private func installLifecycleObservers() {
         let center = NSWorkspace.shared.notificationCenter
         let wakeObserver = center.addObserver(
@@ -233,12 +215,88 @@ final class AppRuntime: ObservableObject {
             queue: .main
         ) { [weak self] _ in
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) { [weak self] in
-                guard let self else { return }
-                self.lastAutomaticReconnectTimestamp = ProcessInfo.processInfo.systemUptime
-                self.reconnectBridge()
+                self?.restartApplication()
             }
         }
         workspaceObservers.append(wakeObserver)
+    }
+
+    private func restartApplication() {
+        guard !restartScheduled else { return }
+
+        do {
+            try ApplicationRestarter.scheduleRelaunch(of: Bundle.main.bundleURL)
+            restartScheduled = true
+            deviceStatus = L10n.text("restarting")
+            systemEvents.stop()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                Darwin._exit(EXIT_SUCCESS)
+            }
+        } catch {
+            deviceStatus = L10n.text("restart_failed")
+        }
+    }
+
+    func setLaunchAtLogin(_ enabled: Bool) {
+        updateLaunchAtLogin(enabled, openSettingsWhenApprovalIsRequired: true)
+    }
+
+    private func updateLaunchAtLogin(
+        _ enabled: Bool,
+        openSettingsWhenApprovalIsRequired: Bool
+    ) {
+        let service = SMAppService.mainApp
+        launchAtLoginError = nil
+        let action = LaunchAtLoginPolicy.action(
+            desiredEnabled: enabled,
+            currentStatus: service.status
+        )
+
+        do {
+            switch action {
+            case .register:
+                try service.register()
+            case .unregister:
+                try service.unregister()
+            case .openSystemSettings:
+                if openSettingsWhenApprovalIsRequired {
+                    openLoginItemSettings()
+                }
+            case .none:
+                break
+            }
+        } catch {
+            launchAtLoginError = error.localizedDescription
+        }
+
+        refreshLaunchAtLoginStatus()
+        if action == .register,
+           enabled,
+           launchAtLoginRequiresApproval,
+           openSettingsWhenApprovalIsRequired {
+            openLoginItemSettings()
+        }
+    }
+
+    func openLoginItemSettings() {
+        SMAppService.openSystemSettingsLoginItems()
+    }
+
+    private func configureLaunchAtLogin() {
+        let defaults = UserDefaults.standard
+        let firstLaunchKey = "didConfigureLaunchAtLogin"
+        if !defaults.bool(forKey: firstLaunchKey), Self.isInstalledApplication {
+            defaults.set(true, forKey: firstLaunchKey)
+            updateLaunchAtLogin(true, openSettingsWhenApprovalIsRequired: false)
+        } else {
+            refreshLaunchAtLoginStatus()
+        }
+    }
+
+    private func refreshLaunchAtLoginStatus() {
+        let status = SMAppService.mainApp.status
+        launchAtLoginEnabled = status == .enabled
+        launchAtLoginRequiresApproval = status == .requiresApproval
     }
 
     private func saveConfiguration() {
@@ -256,5 +314,79 @@ final class AppRuntime: ObservableObject {
 
     private static var isRunningTests: Bool {
         ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
+    }
+
+    private static var isInstalledApplication: Bool {
+        let path = Bundle.main.bundleURL.standardizedFileURL.path
+        return path.hasPrefix("/Applications/")
+            || path.hasPrefix(NSHomeDirectory() + "/Applications/")
+    }
+}
+
+private enum ApplicationRestarter {
+    static func scheduleRelaunch(of applicationURL: URL) throws {
+        let command = try ApplicationRelaunchCommand.make(for: applicationURL)
+        let process = Process()
+        process.executableURL = command.executableURL
+        process.arguments = command.arguments
+        process.standardInput = FileHandle.nullDevice
+        process.standardOutput = FileHandle.nullDevice
+        process.standardError = FileHandle.nullDevice
+        try process.run()
+    }
+}
+
+struct ApplicationRelaunchCommand: Equatable {
+    let executableURL: URL
+    let arguments: [String]
+
+    static func make(for applicationURL: URL) throws -> ApplicationRelaunchCommand {
+        let applicationPath = applicationURL.standardizedFileURL.path
+        guard !applicationPath.contains("/AppTranslocation/") else {
+            throw ApplicationRelaunchError.translocatedApplication
+        }
+
+        return ApplicationRelaunchCommand(
+            executableURL: URL(fileURLWithPath: "/bin/sh"),
+            arguments: [
+                "-c",
+                "sleep 1; exec /usr/bin/open -n \"$1\"",
+                "MigMouse-Relaunch",
+                applicationPath
+            ]
+        )
+    }
+}
+
+enum ApplicationRelaunchError: Error {
+    case translocatedApplication
+}
+
+enum LaunchAtLoginAction: Equatable {
+    case none
+    case register
+    case unregister
+    case openSystemSettings
+}
+
+enum LaunchAtLoginPolicy {
+    static func action(
+        desiredEnabled: Bool,
+        currentStatus: SMAppService.Status
+    ) -> LaunchAtLoginAction {
+        if desiredEnabled {
+            if currentStatus == .enabled {
+                return .none
+            }
+            if currentStatus == .requiresApproval {
+                return .openSystemSettings
+            }
+            return .register
+        }
+
+        if currentStatus == .enabled || currentStatus == .requiresApproval {
+            return .unregister
+        }
+        return .none
     }
 }

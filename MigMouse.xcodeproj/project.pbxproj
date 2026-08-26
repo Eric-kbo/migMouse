@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A11C0A000000000000000001 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A11C0A000000000000000002 /* Assets.xcassets */; };
+		A11C0A000000000000000003 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A11C0A000000000000000004 /* ServiceManagement.framework */; };
 		01EE640958F0BB29B84E17B7 /* PermissionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194E776E100AC9ED3FD420DE /* PermissionManager.swift */; };
 		3092F81AF3D7859B9B01F7DE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2098950DAED565F222AB05F4 /* CoreGraphics.framework */; };
 		37FD4731C1E728F60BC74689 /* MMMultitouchBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = D471572DE5816FE508D2A85F /* MMMultitouchBridge.m */; };
@@ -45,6 +46,7 @@
 
 /* Begin PBXFileReference section */
 		A11C0A000000000000000002 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A11C0A000000000000000004 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		05FD8721F423417AC13A762E /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = "Localization/zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		0F37DD925F911ADB34831CA5 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		167A56A3C06685CA69DDD42B /* TapRecognizer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TapRecognizer.swift; path = Gestures/TapRecognizer.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				F57E821D31953AB4DBD05B0F /* ApplicationServices.framework in Frameworks */,
 				3092F81AF3D7859B9B01F7DE /* CoreGraphics.framework in Frameworks */,
 				77FBE11417B6973C16228042 /* Foundation.framework in Frameworks */,
+				A11C0A000000000000000003 /* ServiceManagement.framework in Frameworks */,
 				C20A1190D0F296DC6532FA6C /* SwiftUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -173,6 +176,7 @@
 				D7E34E9B39F6B6220D25BB73 /* ApplicationServices.framework */,
 				2098950DAED565F222AB05F4 /* CoreGraphics.framework */,
 				C4F3EA00B297CC77BDE71A40 /* Foundation.framework */,
+				A11C0A000000000000000004 /* ServiceManagement.framework */,
 				76C956A0C33931A0E2AEF469 /* SwiftUI.framework */,
 			);
 			name = Frameworks;

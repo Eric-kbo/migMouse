@@ -46,7 +46,7 @@ Dir.glob(File.join(root, "MigMouseTests", "**", "*.swift")).sort.each do |path|
 end
 
 frameworks = project.frameworks_group
-%w[AppKit.framework ApplicationServices.framework CoreGraphics.framework Foundation.framework SwiftUI.framework].each do |name|
+%w[AppKit.framework ApplicationServices.framework CoreGraphics.framework Foundation.framework ServiceManagement.framework SwiftUI.framework].each do |name|
   ref = frameworks.new_file("System/Library/Frameworks/#{name}")
   ref.source_tree = "SDKROOT"
   app.frameworks_build_phase.add_file_reference(ref)
