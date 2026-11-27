@@ -4,7 +4,7 @@
 
 <p align="center">
   <a href="https://github.com/Eric-kbo/migMouse/actions/workflows/build.yml"><img src="https://github.com/Eric-kbo/migMouse/actions/workflows/build.yml/badge.svg" alt="Build"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-6e56cf.svg" alt="MIT License"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-AGPL--3.0--only-6e56cf.svg" alt="GNU AGPL v3.0 only"></a>
   <img src="https://img.shields.io/badge/macOS-14%2B-111827?logo=apple" alt="macOS 14+">
   <img src="https://img.shields.io/badge/Swift-5-F05138?logo=swift&logoColor=white" alt="Swift 5">
 </p>
@@ -99,4 +99,12 @@ Maintainers can find the signed and notarized release process in [docs/RELEASING
 
 ## License
 
-MigMouse is available under the [MIT License](LICENSE).
+Copyright (c) 2026 Eric-kbo and contributors.
+
+MigMouse is free and open-source software: you can redistribute it and/or modify it under the terms of the [GNU Affero General Public License, version 3 only](LICENSE) (`SPDX-License-Identifier: AGPL-3.0-only`). It is distributed without any warranty; see the license for details.
+
+Commercial use and paid redistribution are permitted. Distributing modified versions requires licensing the covered work under AGPL-3.0-only, preserving the required notices, and including the license. Binary distributions must provide access to the corresponding source under the license's terms.
+
+If you modify the program and your version supports remote interaction over a computer network, you must prominently offer those users access to the corresponding source of your version at no charge, as required by section 13.
+
+This license applies from this revision onward. Earlier versions released under MIT retain their original license, including its commercial permissions; this change does not revoke those grants.

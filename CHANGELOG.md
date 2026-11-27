@@ -4,6 +4,11 @@ All notable changes to MigMouse will be documented here.
 
 ## [Unreleased]
 
+### Changed
+
+- Switch from MIT to GNU AGPL v3.0 only (`AGPL-3.0-only`) for this revision and later; earlier MIT releases retain their original license and permissions
+- Include the license text in the app bundle and update documentation, contribution terms, and app copyright information
+
 ### Planned
 
 - Personalized touch calibration

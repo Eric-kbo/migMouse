@@ -33,4 +33,4 @@ If you add or remove source files, regenerate the Xcode project with `ruby scrip
 
 ## Pull requests
 
-Keep each pull request focused. Explain user-visible behavior, tradeoffs, and how you tested it. By contributing, you agree that your contribution is licensed under the project's MIT License.
+Keep each pull request focused. Explain user-visible behavior, tradeoffs, and how you tested it. By contributing, you agree that your contribution is licensed under the project's [GNU Affero General Public License, version 3 only](LICENSE) (`AGPL-3.0-only`).

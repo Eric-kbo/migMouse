@@ -4,7 +4,7 @@
 
 <p align="center">
   <a href="https://github.com/Eric-kbo/migMouse/actions/workflows/build.yml"><img src="https://github.com/Eric-kbo/migMouse/actions/workflows/build.yml/badge.svg" alt="构建状态"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-6e56cf.svg" alt="MIT License"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-AGPL--3.0--only-6e56cf.svg" alt="GNU AGPL v3.0 only"></a>
   <img src="https://img.shields.io/badge/macOS-14%2B-111827?logo=apple" alt="macOS 14+">
 </p>
 
@@ -85,4 +85,12 @@ MigMouse 运行时加载 Apple 私有的 `MultitouchSupport.framework` 读取触
 
 ## 开源许可
 
-MigMouse 使用 [MIT License](LICENSE) 开源。
+Copyright (c) 2026 Eric-kbo and contributors.
+
+MigMouse 是自由及开源软件，你可以根据 [GNU Affero 通用公共许可证第 3 版（仅此版本）](LICENSE)重新分发和修改它（`SPDX-License-Identifier: AGPL-3.0-only`）。本软件不提供任何担保，具体条款以许可证原文为准。
+
+允许商用和付费再分发。分发修改版时，受许可证覆盖的作品必须继续使用 AGPL-3.0-only、保留必要声明并附上许可证；分发二进制程序时，还必须按许可证要求提供对应源码的获取方式。
+
+如果你修改程序，且修改版支持用户通过计算机网络与之远程交互，必须按第 13 条要求，显著地向这些用户提供免费获取该修改版对应源码的方式。
+
+新许可从本次修订起适用。此前已按 MIT 发布的版本仍保留其原有许可及商用权利，本次变更不会撤回这些既有授权。

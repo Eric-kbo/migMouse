@@ -34,4 +34,10 @@ Do not publish an artifact unless all three checks succeed:
 
 ## Publish
 
-Create an annotated tag named `v<VERSION>` from the release commit and publish a GitHub Release with the ZIP and SHA-256 file. Download the ZIP from GitHub again and repeat the signature, Gatekeeper, stapler, and checksum checks on the downloaded artifact.
+Build from the release commit with no uncommitted changes to tracked files. Create an annotated tag named `v<VERSION>` from that same commit and publish a GitHub Release with the ZIP and SHA-256 file.
+
+For releases under AGPL-3.0-only, provide the complete corresponding source for the exact binary version at no additional charge. Verify that the release's automatically generated **Source code (zip)** and **Source code (tar.gz)** downloads contain the matching source, Xcode project, build scripts, and `LICENSE`. Add a direct link to that tag's source archive beside the binary download in the release notes, and keep the source available for as long as the binary is offered. Do not substitute a link to the changing default branch.
+
+The app bundle includes the license text at `MigMouse.app/Contents/Resources/LICENSE`; retain it when packaging the app, along with the copyright information and required notices. If a modified version supports remote user interaction over a computer network, section 13 also requires prominently offering those users free access to that version's corresponding source. Earlier releases published under MIT retain their original license and permissions.
+
+Download the ZIP from GitHub again and repeat the signature, Gatekeeper, stapler, and checksum checks on the downloaded artifact. Also verify that the bundled `LICENSE` matches the release tag and that the linked source archive can be downloaded.

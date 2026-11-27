@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A11C0A000000000000000005 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = A11C0A000000000000000006 /* LICENSE */; };
 		A11C0A000000000000000001 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A11C0A000000000000000002 /* Assets.xcassets */; };
 		A11C0A000000000000000003 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A11C0A000000000000000004 /* ServiceManagement.framework */; };
 		01EE640958F0BB29B84E17B7 /* PermissionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194E776E100AC9ED3FD420DE /* PermissionManager.swift */; };
@@ -45,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A11C0A000000000000000006 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		A11C0A000000000000000002 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A11C0A000000000000000004 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		05FD8721F423417AC13A762E /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = "Localization/zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 		68606A96BB8BB5598206EFCC = {
 			isa = PBXGroup;
 			children = (
+				A11C0A000000000000000006 /* LICENSE */,
 				E0A8E648059425FD03D36D7E /* Products */,
 				13971E14185BC50D5419B99F /* Frameworks */,
 				02C6FD5F665ACC01E7196FC7 /* MigMouse */,
@@ -318,6 +321,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A11C0A000000000000000005 /* LICENSE in Resources */,
 				A11C0A000000000000000001 /* Assets.xcassets in Resources */,
 				643E58466BC67F31A0694A7B /* Localizable.strings in Resources */,
 			);
